@@ -11,7 +11,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - db_ms_data:/var/lib/mysql
-      - ./db-seed:/docker-entrypoint-initdb.d:ro
+      - ./db-seed:/docker-entrypoint-initdb.d:ro   # auto-import *.sql lần đầu
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
       interval: 5s
@@ -24,7 +24,7 @@ services:
       db:
         condition: service_healthy
     ports:
-      - "8002:80"
+      - "8002:80"    # http://localhost:8002
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wp
@@ -34,6 +34,7 @@ services:
     volumes:
       - wp_ms_data:/var/www/html
 
+  # Seed wp-content (plugins/themes/uploads) vào volume lần đầu
   init_wpfiles:
     image: bash:5.2
     depends_on: [wordpress]
@@ -45,7 +46,7 @@ services:
         if [ ! -e /var/www/html/.seeded ] && [ -d /seed/wp-content ]; then
           mkdir -p /var/www/html/wp-content;
           cp -R /seed/wp-content/* /var/www/html/wp-content/ 2>/dev/null || true;
-          chown -R 33:33 /var/www/html/wp-content || true;
+          chown -R 33:33 /var/www/html/wp-content || true;  # www-data
           touch /var/www/html/.seeded;
           echo 'Seeded wp-content ✓';
         else
@@ -54,6 +55,7 @@ services:
       "
     restart: "no"
 
+  # Bật Multisite + ghi .htaccess + fix URL nếu dump khác WP_URL
   init_multisite:
     image: wordpress:cli
     depends_on: [wordpress]
@@ -68,9 +70,14 @@ services:
     entrypoint: ["bash","-lc"]
     command: |
       set -e
+      # chờ wp-config.php được tạo bởi container 'wordpress'
       until [ -f /var/www/html/wp-config.php ]; do sleep 2; done
+
+      # Tách host:port và path từ WP_URL
       HP=$(php -r '$u=parse_url(getenv("WP_URL")); echo $u["host"].(isset($u["port"])?":".$u["port"]:"");')
       PT=$(php -r '$u=parse_url(getenv("WP_URL")); echo isset($u["path"])?rtrim($u["path"],"/")."/":"/";')
+
+      # Chèn các hằng số Multisite (thay cho sed/cat thủ công)
       wp --path=/var/www/html config set WP_ALLOW_MULTISITE true --type=constant --raw --allow-root || true
       wp --path=/var/www/html config set MULTISITE true --type=constant --raw --allow-root || true
       wp --path=/var/www/html config set SUBDOMAIN_INSTALL 0 --type=constant --raw --allow-root || true
@@ -78,24 +85,33 @@ services:
       wp --path=/var/www/html config set PATH_CURRENT_SITE "$PT" --type=constant --allow-root || true
       wp --path=/var/www/html config set SITE_ID_CURRENT_SITE 1 --type=constant --raw --allow-root || true
       wp --path=/var/www/html config set BLOG_ID_CURRENT_SITE 1 --type=constant --raw --allow-root || true
-      if [ ! -f /var/www/html/.htaccess ]; then
-        cat > /var/www/html/.htaccess <<'HT'
+
+      # .htaccess bản đầy đủ (có HTTP_AUTHORIZATION & rules multisite)
+      cat > /var/www/html/.htaccess <<'HT'
       # BEGIN WordPress
       RewriteEngine On
+      RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
       RewriteBase /
       RewriteRule ^index\.php$ - [L]
-      RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+
+      # add a trailing slash to /wp-admin
+      RewriteRule ^([_0-9a-zA-Z-]+)?/wp-admin$ $1wp-admin/ [R=301,L]
+
       RewriteCond %{REQUEST_FILENAME} -f [OR]
       RewriteCond %{REQUEST_FILENAME} -d
       RewriteRule ^ - [L]
+      RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+      RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
       RewriteRule . index.php [L]
       # END WordPress
       HT
-      fi
+
+      # Nếu siteurl trong DB khác WP_URL (vd dump từ máy khác), tự đổi
       CUR=$(wp --path=/var/www/html option get siteurl --allow-root || echo "")
       if [ -n "$CUR" ] && [ "$CUR" != "$WP_URL" ]; then
         wp --path=/var/www/html search-replace "$CUR" "$WP_URL" --all-tables --allow-root || true
       fi
+
       echo 'init_multisite done'
     restart: "no"
 

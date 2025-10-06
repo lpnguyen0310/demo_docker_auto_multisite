@@ -1,0 +1,252 @@
+# Translation of Themes - Hello Biz in Vietnamese
+# This file is distributed under the same license as the Themes - Hello Biz package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-04-24 02:47:21+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: vi_VN\n"
+"Project-Id-Version: Themes - Hello Biz\n"
+
+#. Theme Name of the theme
+#: style.css modules/admin-home/components/admin-menu-controller.php:28
+#: modules/admin-home/components/admin-menu-controller.php:29
+#: assets/js/hello-biz-admin-top-bar.js:1
+#, gp-priority: high
+msgid "Hello Biz"
+msgstr "Hello Biz"
+
+#: modules/admin-home/rest/promotions.php:30
+msgid "Try Image Optimizer for free"
+msgstr "Dùng thử Image Optimizer miễn phí"
+
+#: modules/admin-home/rest/promotions.php:29
+msgid "Improve Speed."
+msgstr "Cải thiện tốc độ."
+
+#: modules/admin-home/rest/promotions.php:28
+msgid "Reduce Size."
+msgstr "Giảm kích thước."
+
+#: modules/admin-home/rest/promotions.php:27
+msgid "Optimize Images."
+msgstr "Tối ưu hóa hình ảnh."
+
+#: modules/theme/starter-content/home.php:400
+msgctxt "Theme starter content"
+msgid "Home"
+msgstr "Tổng quan"
+
+#: includes/welcome-banner-config.php:28
+msgid "Welcome to Hello Biz"
+msgstr "Chào mừng đến với Hello Biz"
+
+#: template-parts/search.php:73
+msgid "It seems we can't find what you're looking for."
+msgstr "Có vẻ như chúng tôi không tìm thấy những gì bạn đang tìm kiếm."
+
+#: template-parts/header.php:43
+msgid "Main menu"
+msgstr "Menu chính"
+
+#: template-parts/footer.php:21
+msgid "Footer menu"
+msgstr "Menu chân trang"
+
+#. translators: %s: HTML entity for arrow character.
+#: template-parts/archive.php:54
+msgid "Next %s"
+msgstr "Tiếp theo %s"
+
+#. translators: %s: HTML entity for arrow character.
+#: template-parts/archive.php:50
+msgid "%s Previous"
+msgstr "%s Trước"
+
+#: modules/theme/components/customizer.php:22
+msgid "Header & Footer"
+msgstr "Đầu trang & Chân trang"
+
+#: modules/theme/classes/customizer-action-links.php:66
+msgid "By clicking “Begin setup” I agree to install and activate the Hello+ plugin."
+msgstr "Bằng cách nhấp vào “Bắt đầu thiết lập”, tôi đồng ý cài đặt và kích hoạt plugin Hello+."
+
+#: modules/theme/classes/customizer-action-links.php:61
+msgid "Elementor"
+msgstr "Elementor"
+
+#: modules/conversion-banner/components/conversion-banner.php:109
+msgid "Notice dismissed."
+msgstr "Thông báo đã bị tắt."
+
+#: modules/theme/classes/customizer-action-links.php:55
+msgid "Finish Setup"
+msgstr "Hoàn tất thiết lập"
+
+#: modules/admin-home/rest/theme-settings.php:52
+msgid "Settings must be an array"
+msgstr "Cài đặt phải là một mảng"
+
+#: modules/admin-home/rest/promotions.php:94
+msgid "Role Manager"
+msgstr "Quản lý vai trò"
+
+#: modules/admin-home/rest/promotions.php:93
+msgid "Customs Attribute"
+msgstr "Thuộc tính tùy chỉnh"
+
+#: modules/admin-home/rest/promotions.php:92
+msgid "Form Integrations"
+msgstr "Tích hợp biểu mẫu"
+
+#: modules/admin-home/rest/promotions.php:91
+msgid "Form Submission"
+msgstr "Gửi biểu mẫu"
+
+#: modules/admin-home/rest/promotions.php:90
+msgid "Collaborative Notes"
+msgstr "Ghi chú cộng tác"
+
+#: modules/admin-home/rest/promotions.php:89
+msgid "E-commerce Features"
+msgstr "Tính năng E-commerce"
+
+#: modules/admin-home/rest/promotions.php:88
+msgid "Custom Code & CSS"
+msgstr "Mã tùy chỉnh & CSS"
+
+#: modules/admin-home/rest/promotions.php:87
+msgid "Popup Builder"
+msgstr "Trình tạo Popup"
+
+#: modules/admin-home/rest/promotions.php:84
+msgid "Upgrade Now"
+msgstr "Nâng cấp ngay"
+
+#: modules/admin-home/rest/promotions.php:82
+msgid "Get complete design flexibility for your website with Elementor Pro’s advanced tools and premium features."
+msgstr "Tận hưởng sự linh hoạt thiết kế hoàn toàn cho trang web của bạn với các công cụ tiên tiến và tính năng cao cấp của Elementor Pro."
+
+#: modules/admin-home/rest/promotions.php:80
+msgid "Bring your vision to life"
+msgstr "Hiện thực hóa tầm nhìn của bạn"
+
+#: modules/admin-home/rest/promotions.php:79
+msgid "Elementor Pro"
+msgstr "Elementor Pro"
+
+#: modules/admin-home/rest/promotions.php:70
+msgid "Let's Go"
+msgstr "Bắt đầu thôi"
+
+#: modules/admin-home/rest/promotions.php:68
+msgid "Boost creativity with Elementor AI. Craft & enhance copy, create custom CSS & Code, and generate images to elevate your website."
+msgstr "Thúc đẩy sự sáng tạo với Elementor AI. Chế tác & nâng cao bản sao, tạo CSS & Mã tùy chỉnh, và tạo hình ảnh để nâng tầm trang web của bạn."
+
+#: modules/admin-home/rest/promotions.php:65
+#: modules/admin-home/rest/promotions.php:66
+msgid "Elementor AI"
+msgstr "Elementor AI"
+
+#: modules/admin-home/rest/promotions.php:32
+#: modules/admin-home/rest/promotions.php:51
+msgid "Install"
+msgstr "Cài đặt"
+
+#: modules/admin-home/rest/promotions.php:24
+msgid "Elementor Image Optimizer"
+msgstr "Bộ tối ưu hóa hình ảnh Elementor"
+
+#: includes/welcome-banner-config.php:123
+msgid "View site"
+msgstr "Xem trang web"
+
+#: modules/theme/classes/customizer-action-links.php:46
+msgid "Begin Setup"
+msgstr "Bắt đầu thiết lập"
+
+#: modules/admin-home/rest/admin-config.php:208
+#: modules/theme/components/theme-support.php:23
+msgid "Footer"
+msgstr "Chân trang"
+
+#: modules/admin-home/rest/admin-config.php:200
+#: modules/theme/components/theme-support.php:22
+msgid "Header"
+msgstr "Đầu trang"
+
+#: modules/admin-home/rest/admin-config.php:189
+#: modules/settings/components/settings-menu.php:16
+#: modules/settings/components/settings-menu.php:17
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: modules/admin-home/rest/admin-config.php:184
+msgid "Add New Page"
+msgstr "Thêm trang mới"
+
+#: modules/admin-home/components/admin-menu-controller.php:39
+#: modules/admin-home/components/admin-menu-controller.php:40
+#: template-parts/header.php:30
+msgid "Home"
+msgstr "Trang chủ"
+
+#: includes/module-base.php:259 includes/module-base.php:270
+msgid "Something went wrong."
+msgstr "Đã xảy ra lỗi."
+
+#: header.php:31
+msgid "Skip to content"
+msgstr "Bỏ qua đến nội dung"
+
+#: comments.php:37
+msgctxt "comments title"
+msgid "%s Response"
+msgid_plural "%s Responses"
+msgstr[0] "%s Phản hồi"
+
+#: comments.php:32
+msgctxt "comments title"
+msgid "One Response"
+msgstr "Một phản hồi"
+
+#: template-parts/single.php:31
+msgid "Tagged "
+msgstr "Đã gắn thẻ "
+
+#: includes/welcome-banner-config.php:55
+msgid "Edit home page"
+msgstr "Sửa trang chủ"
+
+#: modules/admin-home/rest/admin-config.php:297
+msgid "Site Logo"
+msgstr "Logo"
+
+#: modules/admin-home/rest/admin-config.php:310
+msgid "Site Colors"
+msgstr "Màu sắc"
+
+#: modules/admin-home/rest/admin-config.php:316
+msgid "Site Fonts"
+msgstr "Phông chữ"
+
+#. Author URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://elementor.com/?utm_source=wp-themes&utm_campaign=author-uri&utm_medium=wp-dash"
+msgstr "https://elementor.com/?utm_source=wp-themes&utm_campaign=author-uri&utm_medium=wp-dash"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "Elementor Team"
+msgstr "Nhóm Elementor"
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://elementor.com/products/hello-biz/?utm_source=wp-themes&utm_campaign=theme-uri&utm_medium=wp-dash"
+msgstr "https://elementor.com/products/hello-biz/?utm_source=wp-themes&utm_campaign=theme-uri&utm_medium=wp-dash"

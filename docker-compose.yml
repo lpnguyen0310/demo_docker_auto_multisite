@@ -1,0 +1,104 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp
+      MYSQL_PASSWORD: wp
+      MYSQL_ROOT_PASSWORD: root
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_ms_data:/var/lib/mysql
+      - ./db-seed:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8002:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wordpress
+      WP_URL: http://localhost:8002
+    volumes:
+      - wp_ms_data:/var/www/html
+
+  init_wpfiles:
+    image: bash:5.2
+    depends_on: [wordpress]
+    volumes:
+      - wp_ms_data:/var/www/html
+      - ./content/wp-content:/seed/wp-content:ro
+    command: >
+      bash -lc "
+        if [ ! -e /var/www/html/.seeded ] && [ -d /seed/wp-content ]; then
+          mkdir -p /var/www/html/wp-content;
+          cp -R /seed/wp-content/* /var/www/html/wp-content/ 2>/dev/null || true;
+          chown -R 33:33 /var/www/html/wp-content || true;
+          touch /var/www/html/.seeded;
+          echo 'Seeded wp-content ✓';
+        else
+          echo 'Skip seeding (already seeded).';
+        fi
+      "
+    restart: "no"
+
+  init_multisite:
+    image: wordpress:cli
+    depends_on: [wordpress]
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wordpress
+      WP_URL: http://localhost:8002
+    volumes:
+      - wp_ms_data:/var/www/html
+    entrypoint: ["bash","-lc"]
+    command: |
+      set -e
+      until [ -f /var/www/html/wp-config.php ]; do sleep 2; done
+      HP=$(php -r '$u=parse_url(getenv("WP_URL")); echo $u["host"].(isset($u["port"])?":".$u["port"]:"");')
+      PT=$(php -r '$u=parse_url(getenv("WP_URL")); echo isset($u["path"])?rtrim($u["path"],"/")."/":"/";')
+      wp --path=/var/www/html config set WP_ALLOW_MULTISITE true --type=constant --raw --allow-root || true
+      wp --path=/var/www/html config set MULTISITE true --type=constant --raw --allow-root || true
+      wp --path=/var/www/html config set SUBDOMAIN_INSTALL 0 --type=constant --raw --allow-root || true
+      wp --path=/var/www/html config set DOMAIN_CURRENT_SITE "$HP" --type=constant --allow-root || true
+      wp --path=/var/www/html config set PATH_CURRENT_SITE "$PT" --type=constant --allow-root || true
+      wp --path=/var/www/html config set SITE_ID_CURRENT_SITE 1 --type=constant --raw --allow-root || true
+      wp --path=/var/www/html config set BLOG_ID_CURRENT_SITE 1 --type=constant --raw --allow-root || true
+      if [ ! -f /var/www/html/.htaccess ]; then
+        cat > /var/www/html/.htaccess <<'HT'
+      # BEGIN WordPress
+      RewriteEngine On
+      RewriteBase /
+      RewriteRule ^index\.php$ - [L]
+      RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+      RewriteCond %{REQUEST_FILENAME} -f [OR]
+      RewriteCond %{REQUEST_FILENAME} -d
+      RewriteRule ^ - [L]
+      RewriteRule . index.php [L]
+      # END WordPress
+      HT
+      fi
+      CUR=$(wp --path=/var/www/html option get siteurl --allow-root || echo "")
+      if [ -n "$CUR" ] && [ "$CUR" != "$WP_URL" ]; then
+        wp --path=/var/www/html search-replace "$CUR" "$WP_URL" --all-tables --allow-root || true
+      fi
+      echo 'init_multisite done'
+    restart: "no"
+
+volumes:
+  db_ms_data:
+  wp_ms_data:

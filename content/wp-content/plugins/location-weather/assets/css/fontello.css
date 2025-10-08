@@ -1,0 +1,224 @@
+@font-face {
+	font-family: 'splwp-fontello';
+	src: url('../font/fontello.eot?913132');
+	src: url('../font/fontello.eot?913132#iefix') format('embedded-opentype'),
+		url('../font/fontello.woff2?913132') format('woff2'),
+		url('../font/fontello.woff?913132') format('woff'),
+		url('../font/fontello.ttf?913132') format('truetype'),
+		url('../font/fontello.svg?913132#fontello') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?37902460#fontello') format('svg');
+  }
+}
+*/
+[class^="splwp-icon-"]:before,
+[class*=" splwp-icon-"]:before {
+	font-family: "splwp-fontello";
+	font-style: normal;
+	font-weight: normal;
+	speak: never;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	margin-right: .2em;
+	text-align: center;
+	/* opacity: .8; */
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+
+	/* you can be more comfortable with increased icons size */
+	/* font-size: 120%; */
+
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Uncomment for 3D effect */
+	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.splwp-icon-api-settings:before {
+	content: '\e803';
+}
+
+/* '' */
+.splwp-icon-lw-icon:before {
+	content: '\e809';
+}
+
+/* '' */
+.splwp-icon-style-settings:before {
+	content: '\e80c';
+}
+
+/* '' */
+.splwp-icon-external-link:before {
+	content: '\e80d';
+}
+
+/* '' */
+.splwp-icon-humidity-1:before {
+	content: '\e81a';
+}
+
+/* '' */
+.splwp-icon-pressure-1:before {
+	content: '\e81b';
+}
+.splwp-icon-wind-1:before {
+	content: '\e873';
+}
+
+/* '' */
+.splwp-icon-wind-gust-1:before {
+	content: '\e81c';
+}
+
+/* '' */
+.splwp-icon-precipitation-1:before {
+	content: '\e81f';
+}
+
+/* '' */
+.splwp-icon-clouds-1:before {
+	content: '\e821';
+}
+
+/* '' */
+.splwp-icon-visibility-1:before {
+	content: '\e823';
+}
+
+/* '' */
+.splwp-icon-sunrise-1:before {
+	content: '\e825';
+}
+
+/* '' */
+.splwp-icon-sunset-1:before {
+	content: '\e826';
+}
+
+/* '' */
+.splwp-icon-additional-data:before {
+	content: '\e87b';
+}
+
+/* '' */
+.splwp-icon-additional-data-style:before {
+	content: '\e87c';
+}
+
+/* '' */
+.splwp-icon-footer:before {
+	content: '\e87d';
+}
+
+/* '' */
+.splwp-icon-current-weather:before {
+	content: '\e87e';
+}
+
+/* '' */
+.splwp-icon-forecast-data:before {
+	content: '\e87f';
+}
+
+/* '' */
+.splwp-icon-regional-weather:before {
+	content: '\e880';
+}
+
+/* '' */
+.splwp-icon-display-icon:before {
+	content: '\e881';
+}
+
+/* '' */
+.splwp-icon-style:before {
+	content: '\e882';
+}
+
+/* '' */
+.splwp-icon-weather-settings:before {
+	content: '\e883';
+}
+
+/* '' */
+.splwp-icon-api-sett:before {
+	content: '\e884';
+}
+
+/* '' */
+.splwp-icon-code:before {
+	content: '\e885';
+}
+
+/* '' */
+.splwp-icon-advanced:before {
+	content: '\e886';
+}
+
+/* '' */
+.splwp-icon-key-01:before {
+	content: '\e887';
+}
+
+/* '' */
+.splwp-icon-weather-map:before {
+	content: '\e888';
+}
+
+/* '' */
+.splwp-icon-control-layer:before {
+	content: '\e889';
+}
+
+/* '' */
+.splwp-icon-map-preferences:before {
+	content: '\e88a';
+}
+
+/* '' */
+.splwp-icon-popup-weather:before {
+	content: '\e88b';
+}
+
+/* '' */
+.splwp-icon-location-icon:before {
+	content: '\e899';
+}
+
+/* '' */
+.splwp-icon-shuttle_2285485-1:before {
+	content: '\e8bd';
+}
+
+/* '' */
+.splwp-icon-check-icon:before {
+	content: '\e8be';
+}
+
+/* '' */
+.splwp-icon-chevron:before {
+	content: '\e893';
+}

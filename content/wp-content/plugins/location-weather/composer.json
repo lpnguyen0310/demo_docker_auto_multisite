@@ -1,0 +1,22 @@
+{
+    "name": "shamimwp/location-weather",
+    "description": "A plugin to show weather forecasting depending on places.",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Shamim Mia",
+            "email": "shamhagh@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ShapedPlugin\\Weather\\": "includes/"
+        },
+        "files": [
+            "includes/functions.php"
+         ]
+    }
+}

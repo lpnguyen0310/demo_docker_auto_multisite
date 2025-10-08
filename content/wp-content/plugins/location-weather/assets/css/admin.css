@@ -1,0 +1,97 @@
+#adminmenu .menu-icon-location_weather .wp-menu-image img {
+    width: 20px;
+    padding: 4px 0;
+    margin-top: 3px;
+}
+#adminmenu .menu-icon-location_weather div.wp-menu-image{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#adminmenu #menu-posts-location_weather li:nth-child(7) a{
+	color: #f9be48;
+}
+#adminmenu #menu-posts-location_weather li a .sp-go-pro-icon {
+	background-image: url(../images/premium.svg);
+	width: 20px;
+	height: 20px;
+	display: block;
+	float: left;
+	margin-right: 1px;
+	margin-left: -2px;
+	margin-top: -1px;
+}
+.splw-footer-text-star {
+    color: #dba617;
+}
+
+/* Review Notice */
+#location-weather-review-notice {
+    padding: 18px 15px 18px 0;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 20px 20px 0 0;
+    box-shadow: 0 0 20px 0 rgba(36,39,50,.08);
+}
+#location-weather-review-notice .splw-plugin-icon {
+    width: 125px;
+    float: left;
+    line-height: 90px;
+    text-align: center;
+    margin-left: 8px;
+}
+#location-weather-review-notice .splw-plugin-icon img {
+    max-width: 94px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+#location-weather-review-notice .splw-notice-text {
+    overflow: hidden
+}
+#location-weather-review-notice .splw-notice-text h3 {
+    font-size: 24px;
+    margin: 0 0 5px;
+    font-weight: 400;
+    line-height: 1
+}
+#location-weather-review-notice .splw-notice-text p {
+    margin: 10px 0 10px 0;
+    font-size: 13px
+}
+#location-weather-review-notice .splw-notice-text p.splw-review-actions {
+    margin: 10px 0 2px 0
+}
+#location-weather-review-notice .splw-notice-text .splw-review-actions a {
+    text-decoration: none;
+    margin-right: 8px;
+    color: #63a37b;
+    display: inline-block;
+    position: relative
+}
+#location-weather-review-notice .splw-notice-text .splw-review-actions a span {
+    padding-right: 2px
+}
+#location-weather-review-notice .splw-notice-text .splw-review-actions a.button {
+    color: #fff
+}
+
+.rtl  #location-weather-review-notice {
+    margin: 20px 0 0 20px;
+    padding: 18px 0 18px 15px;
+}
+ 
+.rtl #location-weather-review-notice .splw-plugin-icon {
+    float: right;
+    margin: 0 0 0 8px;
+}
+
+.menu-icon-location_weather.wp-not-current-submenu .wp-menu-image.dashicons-before {
+	background-image: url(../images/menu-weather-gray.svg);
+	background-position: 10px center;
+	background-repeat: no-repeat;
+}
+.menu-icon-location_weather.wp-has-current-submenu .wp-menu-image.dashicons-before {
+	background-image: url(../images/menu-weather.svg);
+	background-position: 10px center;
+	background-repeat: no-repeat;
+}
